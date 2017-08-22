@@ -3,6 +3,7 @@ const parseurl = require('parseurl');
 const mustache = require('mustache-express');
 const session = require('express-session')
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const data = require('./users.js')
 const flash = require('req-flash');
 const port = 3000;
@@ -16,6 +17,7 @@ app.set('view engine', 'mustache');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
